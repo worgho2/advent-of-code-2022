@@ -2,7 +2,7 @@ import fs from 'fs';
 import readline from 'readline';
 
 const lineReader = readline.createInterface({
-    input: fs.createReadStream('input.txt')
+    input: fs.createReadStream('input.txt'),
 });
 
 let fileSystem = {};
@@ -70,11 +70,15 @@ function getDirectorySize(directory) {
     return totalSize;
 }
 
+console.log(JSON.stringify(fileSystem, null, 2));
+
 const usedSize = getDirectorySize(fileSystem);
 const freeSize = 70000000 - usedSize;
 const requiredSize = 30000000 - freeSize;
 
-const smallestDistanceDirSize = allDirectoriesSize.filter(i => i >= requiredSize).sort((a,b) => a - b)[0];
+const smallestDistanceDirSize = allDirectoriesSize.filter((i) => i >= requiredSize).sort((a, b) => a - b)[0];
 const sumOfDirectoriesWithAtMost100000 = directoriesWithAtMost100000.reduce((a, b) => a + b);
 
-console.log(`Sum of directories with at most 100000: ${sumOfDirectoriesWithAtMost100000}\nSmallest directory to delete: ${smallestDistanceDirSize}`);
+console.log(
+    `Sum of directories with at most 100000: ${sumOfDirectoriesWithAtMost100000}\nSmallest directory to delete: ${smallestDistanceDirSize}`
+);

@@ -2,7 +2,7 @@ import fs from 'fs';
 import readline from 'readline';
 
 const lineReader = readline.createInterface({
-    input: fs.createReadStream('input.txt')
+    input: fs.createReadStream('input.txt'),
 });
 
 const stacks = [];
@@ -18,7 +18,7 @@ let readState = 0;
 let i = 0;
 for await (const line of lineReader) {
     if (readState === 0) {
-        const items = line.match(/.{1,4}/g).map(i => i.replace(/[ \[\]]+/g, ''));
+        const items = line.match(/.{1,4}/g).map((i) => i.replace(/[ \[\]]+/g, ''));
 
         if (items[0] === '1') {
             readState = 1;
@@ -26,7 +26,7 @@ for await (const line of lineReader) {
         }
 
         if (i === 0) {
-            stacks.push(...Array.from({length: items.length}, () => []));
+            stacks.push(...Array.from({ length: items.length }, () => []));
         }
 
         for (let j = 0; j < stacks.length; j++) {
