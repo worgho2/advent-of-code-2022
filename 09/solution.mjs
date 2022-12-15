@@ -8,11 +8,15 @@ const lineReader = readline.createInterface({
 const ropes = [
     {
         coords: Array.from({ length: 2 }, () => ({ x: 0, y: 0 })),
-        visitedCoords: new Map([['0:0', 1]]),
+        visitedCoords: new Map(),
     },
     {
         coords: Array.from({ length: 10 }, () => ({ x: 0, y: 0 })),
-        visitedCoords: new Map([['0:0', 1]]),
+        visitedCoords: new Map(),
+    },
+    {
+        coords: Array.from({ length: 100 }, () => ({ x: 0, y: 0 })),
+        visitedCoords: new Map(),
     },
 ];
 
